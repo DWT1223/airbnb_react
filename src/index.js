@@ -15,7 +15,7 @@ root.render(
   <Suspense fallback="loading">
     <Provider store={store}>
       <HashRouter>
-       <App />
+        <App />
       </HashRouter>
     </Provider>
   </Suspense>

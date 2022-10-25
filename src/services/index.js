@@ -1,3 +1,3 @@
-import hyRequest from "./request"
+import dwtRequest from "./request"
 
-export default hyRequest
+export default dwtRequest
