@@ -1,29 +1,38 @@
-import React, { memo,useEffect,useState} from 'react'
-import dwtRequest from '@/services'
+import React, { memo} from 'react'
+import { useEffect } from 'react'
+import { shallowEqual, useDispatch, useSelector } from 'react-redux'
+
+import HomeBanner from './c-cpns/home-banner'
+import SectionHeader from '@/components/section-header'
+import { fetchHomeDataAction } from '@/store/modules/home'
+import { HomeWrapper } from './style'
+import { useState } from 'react'
+import SectionRooms from '@/components/sectiom-rooms'
+
 
 const home = memo(() => {
-  // 定义状态
-  const [highScore, setHighScore]=useState({})
-  //网络请求的代码
-  useEffect(()=>{
-     dwtRequest.get({url:'/home/highscore'}).then(res=>{
-      console.log('homeres:',res)
-      setHighScore(res)
-     })
-  },[])
+  const [subtitle] = useState('多住几天，省钱更省心')
+  /** 从redux中获取数据 */
+  const {goodPriceInfo} = useSelector((state)=>({
+    goodPriceInfo:state.home.goodPriceInfo
+  }),shallowEqual)
 
-  return (
-    <div>
-      <h2>{highScore.title}</h2>
-      <h4>{highScore.subtitle}</h4>
-      <ul>
-        {
-          highScore.list?.map((item)=>{
-            return <li key={item.id}>{item.name}</li>
-          })
-        }
-      </ul>
-    </div>
+  /** 派发异步的事件: 发送网络请求 */
+  const dispatch = useDispatch()
+  useEffect(()=>{
+    dispatch(fetchHomeDataAction())
+  },[dispatch])
+
+  return(
+    <HomeWrapper>
+      <HomeBanner/>
+      <div className="content">
+        <div className="good-price">
+          <SectionHeader title={goodPriceInfo.title} subtitle={subtitle}/>
+          <SectionRooms roomList={goodPriceInfo.list}/>
+        </div>
+      </div>
+    </HomeWrapper>
   )
 })
 
