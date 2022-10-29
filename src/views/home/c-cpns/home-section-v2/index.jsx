@@ -10,7 +10,6 @@ import { SectionV2Wrapper } from './style'
 const HomeSectionV2 = memo((props) => {
   /** 从props获取数据 */
   const { infoData } = props
-  console.log(infoData);
 
   /** 定义内部的state */
   const initialName = Object.keys(infoData.dest_list)[0]

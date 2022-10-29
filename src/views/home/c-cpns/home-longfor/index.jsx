@@ -7,6 +7,7 @@ import { LongforWrapper } from './style'
 
 const HomeLongfor = memo((props) => {
   const { infoData } = props
+  console.log(infoData);
 
   return (
     <LongforWrapper>
@@ -15,7 +16,7 @@ const HomeLongfor = memo((props) => {
         <ScrollView>
           {
             infoData.list.map(item => {
-              return <LongforItem itemData={item} key={item.city}/>
+              return <LongforItem itemData={item} key={item.id}/>
             })
           }
         </ScrollView>
