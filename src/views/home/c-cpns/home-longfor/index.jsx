@@ -16,7 +16,7 @@ const HomeLongfor = memo((props) => {
         <ScrollView>
           {
             infoData.list.map(item => {
-              return <LongforItem itemData={item} key={item.id}/>
+              return <LongforItem itemData={item} key={item.city}/>
             })
           }
         </ScrollView>
