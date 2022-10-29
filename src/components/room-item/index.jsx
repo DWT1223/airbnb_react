@@ -29,7 +29,6 @@ const RoomItem = memo((props) => {
             itemData.bottom_info && <span className='extra'>·{itemData.bottom_info?.content}</span>
           }
         </div>
-        
       </div>
     </ItemWrapper>
   )

@@ -1,20 +1,24 @@
-import React, { memo} from 'react'
-import { useEffect } from 'react'
+import React, { memo ,useEffect } from 'react'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 
 import HomeBanner from './c-cpns/home-banner'
-import SectionHeader from '@/components/section-header'
 import { fetchHomeDataAction } from '@/store/modules/home'
 import { HomeWrapper } from './style'
-import { useState } from 'react'
-import SectionRooms from '@/components/sectiom-rooms'
+import HomeSectionV1 from './c-cpns/home-section-v1'
+import HomeSectionV2 from './c-cpns/home-section-v2'
+import { isEmptyO } from '@/utils'
+
 
 
 const home = memo(() => {
-  const [subtitle] = useState('多住几天，省钱更省心')
   /** 从redux中获取数据 */
-  const {goodPriceInfo} = useSelector((state)=>({
-    goodPriceInfo:state.home.goodPriceInfo
+  const {goodPriceInfo,highScoreInfo,discountInfo,recommendInfo, longforInfo, plusInfo} = useSelector((state)=>({
+    goodPriceInfo:state.home.goodPriceInfo,
+    highScoreInfo:state.home.highScoreInfo,
+    discountInfo: state.home.discountInfo,
+    recommendInfo: state.home.recommendInfo,
+    longforInfo: state.home.longforInfo,
+    plusInfo: state.home.plusInfo
   }),shallowEqual)
 
   /** 派发异步的事件: 发送网络请求 */
@@ -27,10 +31,10 @@ const home = memo(() => {
     <HomeWrapper>
       <HomeBanner/>
       <div className="content">
-        <div className="good-price">
-          <SectionHeader title={goodPriceInfo.title} subtitle={subtitle}/>
-          <SectionRooms roomList={goodPriceInfo.list}/>
-        </div>
+        { isEmptyO(discountInfo) && <HomeSectionV2 infoData={discountInfo}/>}
+        { isEmptyO(recommendInfo) && <HomeSectionV2 infoData={recommendInfo}/>}
+        { isEmptyO(discountInfo) && <HomeSectionV1 infoData={goodPriceInfo}/>}
+        { isEmptyO(discountInfo) && <HomeSectionV1 infoData={highScoreInfo}/>}
       </div>
     </HomeWrapper>
   )

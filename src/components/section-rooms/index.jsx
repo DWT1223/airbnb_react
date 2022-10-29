@@ -4,10 +4,10 @@ import { RoomsWrapper } from './style'
 import RoomItem from '@/components/room-item'
 
 const SectionRooms = memo((props) => {
-  const {roomList=[]} = props
+  const {roomList=[],gridNum = 4} = props
 
   return (
-    <RoomsWrapper>
+    <RoomsWrapper gridNum = {gridNum}>
       <div className="gridContainer">
         {
           roomList?.slice(0,8).map(item => {
