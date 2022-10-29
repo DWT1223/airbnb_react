@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React, { memo, useState, useCallback } from 'react'
-
+import SectionFooter from '@/components/section-footer'
 import SectionHeader from '@/components/section-header'
 import SectionRooms from '@/components/section-rooms'
 import SectionTabs from '@/components/section-tabs'
@@ -30,7 +30,7 @@ const HomeSectionV2 = memo((props) => {
       <SectionHeader title={infoData.title} subtitle={infoData.subtitle}/>
       <SectionTabs tabNames={tabNames} tabClick={tabClickHandle}/>
       <SectionRooms roomList={infoData.dest_list?.[name]} gridNum={3} />
-      {/* <SectionFooter name={name}/> */}
+      <SectionFooter name={name}/>
     </SectionV2Wrapper>
   )
 })

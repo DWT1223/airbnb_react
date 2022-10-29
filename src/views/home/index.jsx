@@ -12,7 +12,7 @@ import { isEmptyO } from '@/utils'
 
 const home = memo(() => {
   /** 从redux中获取数据 */
-  const {goodPriceInfo,highScoreInfo,discountInfo,recommendInfo, longforInfo, plusInfo} = useSelector((state)=>({
+  const {goodPriceInfo,highScoreInfo,discountInfo,recommendInfo} = useSelector((state)=>({
     goodPriceInfo:state.home.goodPriceInfo,
     highScoreInfo:state.home.highScoreInfo,
     discountInfo: state.home.discountInfo,
