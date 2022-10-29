@@ -7,13 +7,13 @@ import { HomeWrapper } from './style'
 import HomeSectionV1 from './c-cpns/home-section-v1'
 import HomeSectionV2 from './c-cpns/home-section-v2'
 import { isEmptyO } from '@/utils'
-import HomeLongfor from './c-cpns/home-longfor'
+// import HomeLongfor from './c-cpns/home-longfor'
 
 
 
 const home = memo(() => {
   /** 从redux中获取数据 */
-  const {goodPriceInfo,highScoreInfo,discountInfo,recommendInfo,longforInfo} = useSelector((state)=>({
+  const {goodPriceInfo,highScoreInfo,discountInfo,recommendInfo,longforInfo,plusInfo} = useSelector((state)=>({
     goodPriceInfo:state.home.goodPriceInfo,
     highScoreInfo:state.home.highScoreInfo,
     discountInfo: state.home.discountInfo,
@@ -21,6 +21,9 @@ const home = memo(() => {
     longforInfo: state.home.longforInfo,
     plusInfo: state.home.plusInfo
   }),shallowEqual)
+
+  console.log('123',longforInfo);
+  console.log('@@@',plusInfo);
 
   /** 派发异步的事件: 发送网络请求 */
   const dispatch = useDispatch()
@@ -34,7 +37,7 @@ const home = memo(() => {
       <div className="content">
         { isEmptyO(discountInfo) && <HomeSectionV2 infoData={discountInfo}/>}
         { isEmptyO(recommendInfo) && <HomeSectionV2 infoData={recommendInfo}/>}
-        { isEmptyO(longforInfo) && <HomeLongfor infoData={longforInfo} /> }
+        {/* { isEmptyO(longforInfo) && <HomeLongfor infoData={longforInfo} /> } */}
         { isEmptyO(discountInfo) && <HomeSectionV1 infoData={goodPriceInfo}/>}
         { isEmptyO(discountInfo) && <HomeSectionV1 infoData={highScoreInfo}/>}
       </div>
