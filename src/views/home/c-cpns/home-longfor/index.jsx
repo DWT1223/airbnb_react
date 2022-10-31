@@ -7,8 +7,6 @@ import { LongforWrapper } from './style'
 
 const HomeLongfor = memo((props) => {
   const { infoData } = props
-  console.log(infoData);
-
   return (
     <LongforWrapper>
       <SectionHeader title={infoData.title} subtitle={infoData.subtitle}/>
