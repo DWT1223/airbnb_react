@@ -9,7 +9,7 @@ export function useScrollPosition() {
     const handleScroll = throttle(function() {
       setScrollX(window.scrollX)
       setScrollY(window.scrollY)
-    }, 1000)
+    }, 100)
     window.addEventListener("scroll", handleScroll)
     return () => {
       window.removeEventListener("scroll", handleScroll)

@@ -10,7 +10,7 @@ const Detail = memo((props) => {
   }), shallowEqual)
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(changeHeaderConfigAction({ isFixed: false, isHome: false }))
+    dispatch(changeHeaderConfigAction({ isFixed: true, isHome: false }))
   }, [dispatch])
 
   return (

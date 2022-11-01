@@ -6,7 +6,7 @@ export const RightWrapper = styled.div`
   justify-content: flex-end;
   align-items: center;
 
-  color: ${props => props.theme.text.primaryColor};
+  color: ${props => props.theme.isAlpha ? "#fff": "#484848"};
   font-weight: 600;
 
   .btns{

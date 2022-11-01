@@ -9,6 +9,7 @@ import HomeSectionV2 from './c-cpns/home-section-v2'
 import HomeLongfor from './c-cpns/home-longfor'
 import { isEmptyO } from '@/utils'
 import HomeSectionV3 from './c-cpns/home-section-v3'
+import { changeHeaderConfigAction } from '@/store/modules/main'
 
 
 const home = memo(() => {
@@ -16,6 +17,7 @@ const home = memo(() => {
     const dispatch = useDispatch()
     useEffect(()=>{
       dispatch(fetchHomeDataAction())
+      dispatch(changeHeaderConfigAction({ isFixed: true, isHome: true }))
     },[dispatch])
   /** 从redux中获取数据 */
   const {goodPriceInfo,highScoreInfo,discountInfo,recommendInfo,longforInfo,plusInfo} = useSelector((state)=>({
